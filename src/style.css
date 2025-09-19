@@ -1,0 +1,190 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e9f2ff;
+  color: #0b1956;
+  margin: 0;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  font-family: "Times New Roman";
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0b1956;
+  padding: 10px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.navbar .brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #e9f2ff;
+  text-decoration: none;
+  font-family: "Times New Roman";
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .nav-links a {
+  color: #e8d9ec;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+  font-family: "Times New Roman";
+}
+
+.navbar .nav-links a:hover {
+  background-color: #f7f4ed;
+  color: #0b1956;
+}
+
+.navbar .nav-links a.active {
+  background-color: #e9f2ff;
+  color: #426cc2;
+}
+
+/* Card Layout (Worksheet Style) */
+.book-card-form {
+  display: flex;
+  gap: 20px;
+  background-color: #faf5ef;
+  border: 2px solid #e2b6c2;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Cover Upload */
+.book-cover-upload {
+  flex: 1;
+  text-align: center;
+}
+.book-cover-upload img {
+  display: block;
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Label */
+label {
+  font-size: 20px;
+  font-family: "Courier New";
+}
+::placeholder {
+  font-family: "Courier New";
+}
+
+/* Info Section */
+.book-info-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.book-info-section input,
+.book-info-section textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Rating */
+.overall span,
+.romance span,
+.sadness span {
+  font-size: 22px;
+  cursor: pointer;
+  padding: 2px;
+  color: #0b1956;
+}
+
+.overall span.selected {
+  color: #f8ed4c;
+}
+
+.romance span.selected {
+  color: #f70000;
+}
+
+.sadness span.selected {
+  color: #426cc2;
+}
+
+/* Format */
+.format-options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.format-label {
+  font-size: 35px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 5px;
+  transition: border 0.3s, transform 0.2s;
+}
+.format-options input[type="radio"] {
+  display: none;
+}
+.format-options input[type="radio"]:checked + .format-label {
+  border: 2px solid #0b1956;
+  transform: scale(1.2);
+}
+
+/* Submit Button */
+#submitBtn {
+  background-color: #0b1956;
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 120px;
+  margin: 15px auto 0;
+  display: block;
+  font-size: 16px;
+}
+#submitBtn:hover {
+  background-color: #e9f2ff;
+  color: #0b1956;
+}
+
+/* Book List */
+#bookList {
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.book-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  background: #fff;
+}
+.book-card-top {
+  display: flex;
+  gap: 15px;
+}
+.book-card-top img {
+  width: 100px;
+  border-radius: 8px;
+}

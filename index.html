@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Log</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="#" class="brand">⊹₊⟡⋆ Cozy Books ⊹₊⟡⋆</a>
+      <div class="menu-toggle">☰</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">My Books</a>
+        <a href="index.html" class="active">Book Log</a>
+      </div>
+    </nav>
+
+    <h1>𓂃✍︎ Add a New Book 𓂃✍︎</h1>
+
+    <!-- Book Review Card Style -->
+    <div class="book-card-form">
+      <div class="book-cover-upload">
+        <label for="cover">Upload book cover</label>
+        <input type="file" id="cover" accept="image/*" />
+        <img id="coverPreview" src="" alt="Preview" />
+      </div>
+
+      <div class="book-info-section">
+        <label>Title:</label>
+        <input type="text" id="title" placeholder="Enter book title" />
+
+        <label>Author:</label>
+        <input type="text" id="author" placeholder="Enter author's name" />
+
+        <label>Pages:</label>
+        <input type="text" id="pages" placeholder="Enter number of pages" />
+
+        <label>Summary:</label>
+        <textarea id="summary" placeholder="Short summary..."></textarea>
+
+        <label>Favorite Character:</label>
+        <input type="text" id="character" placeholder="Who’s your favorite?" />
+
+        <label>Format:</label>
+        <div class="format-options">
+          <input type="radio" id="format1" name="format" value="📖 Book" />
+          <label for="format1" class="format-label">📖</label>
+
+          <input type="radio" id="format2" name="format" value="🎧 Audiobook" />
+          <label for="format2" class="format-label">🎧ྀི</label>
+
+          <input type="radio" id="format3" name="format" value="📱 eBook" />
+          <label for="format3" class="format-label">📱</label>
+        </div>
+
+        <label>Ratings:</label>
+        <label>Overall</label>
+        <div id="starRating" class="overall">
+          <span data-value="1">★</span>
+          <span data-value="2">★</span>
+          <span data-value="3">★</span>
+          <span data-value="4">★</span>
+          <span data-value="5">★</span>
+        </div>
+
+        <label>Romance</label>
+        <div id="romanceRating" class="romance">
+          <span data-value="1">ᥫ᭡</span>
+          <span data-value="2">ᥫ᭡</span>
+          <span data-value="3">ᥫ᭡</span>
+          <span data-value="4">ᥫ᭡</span>
+          <span data-value="5">ᥫ᭡</span>
+        </div>
+
+        <label>Sadness</label>
+        <div id="sadnessRating" class="sadness">
+          <span data-value="1">𓄼</span>
+          <span data-value="2">𓄼</span>
+          <span data-value="3">𓄼</span>
+          <span data-value="4">𓄼</span>
+          <span data-value="5">𓄼</span>
+        </div>
+
+        <button id="submitBtn">Add Book</button>
+      </div>
+    </div>
+
+    <script src="src/script.js"></script>
+  </body>
+</html>
