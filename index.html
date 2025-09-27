@@ -12,8 +12,8 @@
       <a href="#" class="brand">⊹₊⟡⋆ Cozy Books ⊹₊⟡⋆</a>
       <div class="menu-toggle">☰</div>
       <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">My Books</a>
+        <a href="src/home.html">Home</a>
+        <a href="src/library.html">My Books</a>
         <a href="index.html" class="active">Book Log</a>
       </div>
     </nav>
@@ -24,25 +24,60 @@
     <div class="book-card-form">
       <div class="book-cover-upload">
         <label for="cover">Upload book cover</label>
-        <input type="file" id="cover" accept="image/*" />
+        <input type="file" id="cover" accept="image/*" class="file-input" />
         <img id="coverPreview" src="" alt="Preview" />
       </div>
 
       <div class="book-info-section">
         <label>Title:</label>
-        <input type="text" id="title" placeholder="Enter book title" />
+        <input
+          type="text"
+          id="title"
+          class="input-text"
+          placeholder="Enter book title"
+        />
 
         <label>Author:</label>
-        <input type="text" id="author" placeholder="Enter author's name" />
+        <input
+          type="text"
+          id="author"
+          class="input-text"
+          placeholder="Enter author's name"
+        />
 
         <label>Pages:</label>
-        <input type="text" id="pages" placeholder="Enter number of pages" />
+        <input
+          type="text"
+          id="pages"
+          class="input-text"
+          placeholder="Enter number of pages"
+        />
 
         <label>Summary:</label>
-        <textarea id="summary" placeholder="Short summary..."></textarea>
+        <textarea
+          id="summary"
+          class="input-text"
+          placeholder="Short summary..."
+        ></textarea>
 
         <label>Favorite Character:</label>
-        <input type="text" id="character" placeholder="Who’s your favorite?" />
+        <input
+          type="text"
+          id="character"
+          class="input-text"
+          placeholder="Who’s your favorite?"
+        />
+
+        <!-- Book Status -->
+        <div class="book-status">
+          <label for="status">Book Status:</label>
+          <select id="status" name="status" required>
+            <option value="">-- Select Status --</option>
+            <option value="currently-reading">📖 Currently Reading</option>
+            <option value="read">✅ Read</option>
+            <option value="tbr">📝 To Be Read</option>
+          </select>
+        </div>
 
         <label>Format:</label>
         <div class="format-options">
@@ -50,7 +85,7 @@
           <label for="format1" class="format-label">📖</label>
 
           <input type="radio" id="format2" name="format" value="🎧 Audiobook" />
-          <label for="format2" class="format-label">🎧ྀི</label>
+          <label for="format2" class="format-label">🎧</label>
 
           <input type="radio" id="format3" name="format" value="📱 eBook" />
           <label for="format3" class="format-label">📱</label>

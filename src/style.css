@@ -1,29 +1,33 @@
+/* ========= Base Styles ========= */
 body {
   font-family: Arial, sans-serif;
-  background-color: #e9f2ff;
-  color: #0b1956;
+  background-color: #ffffef;
+  color: #9a7fb4;
   margin: 0;
   padding: 20px;
 }
+
 h1 {
   text-align: center;
   font-family: "Times New Roman";
 }
-/* Navbar */
+
+/* ========= Navbar ========= */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0b1956;
+  background-color: #9a7fb4;
   padding: 10px 20px;
   border-radius: 12px;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .navbar .brand {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  color: #e9f2ff;
+  color: #ffffef;
   text-decoration: none;
   font-family: "Times New Roman";
 }
@@ -31,10 +35,11 @@ h1 {
 .navbar .nav-links {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .navbar .nav-links a {
-  color: #e8d9ec;
+  color: #ffffef;
   text-decoration: none;
   font-size: 16px;
   padding: 6px 12px;
@@ -43,59 +48,96 @@ h1 {
   font-family: "Times New Roman";
 }
 
-.navbar .nav-links a:hover {
-  background-color: #f7f4ed;
-  color: #0b1956;
-}
-
 .navbar .nav-links a.active {
-  background-color: #e9f2ff;
-  color: #426cc2;
+  background-color: #ffffef;
+  color: #9a7fb4;
 }
 
-/* Card Layout (Worksheet Style) */
+/* ========= Form ========= */
+.book-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #e8d9ec;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-form input,
+.book-form textarea,
+.book-form select,
+.book-form button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.book-form button {
+  background: #426cc2;
+  color: white;
+  cursor: pointer;
+}
+.book-form button:hover {
+  background: #2f4d91;
+}
+
+/* ========= Card Layout ========= */
 .book-card-form {
   display: flex;
   gap: 20px;
-  background-color: #faf5ef;
+  background-color: #dd94b7;
   border: 2px solid #e2b6c2;
   border-radius: 12px;
   padding: 20px;
   max-width: 800px;
   margin: 20px auto;
+  flex-wrap: wrap; /* makes it responsive */
 }
 
-/* Cover Upload */
 .book-cover-upload {
   flex: 1;
   text-align: center;
 }
+
 .book-cover-upload img {
-  display: block;
   width: 150px;
   height: auto;
   margin-top: 10px;
+  padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffef;
+  font-family: "Courier New";
+  color: #ffffef;
+}
+.input-text {
+  color: black;
+  font-family: "Courier New";
+}
+input {
+  color: #ffffef;
+  font-family: "Courier New";
 }
 
-/* Label */
+/* ========= Labels ========= */
 label {
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Courier New";
+  color: #ffffef;
 }
 ::placeholder {
   font-family: "Courier New";
 }
 
-/* Info Section */
+/* ========= Info Section ========= */
 .book-info-section {
   flex: 2;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-
 .book-info-section input,
 .book-info-section textarea {
   width: 100%;
@@ -104,36 +146,33 @@ label {
   border: 1px solid #ccc;
 }
 
-/* Rating */
+/* ========= Rating ========= */
 .overall span,
 .romance span,
 .sadness span {
   font-size: 22px;
   cursor: pointer;
   padding: 2px;
-  color: #0b1956;
+  color: #ffffef;
 }
-
 .overall span.selected {
   color: #f8ed4c;
 }
-
 .romance span.selected {
   color: #f70000;
 }
-
 .sadness span.selected {
   color: #426cc2;
 }
 
-/* Format */
+/* ========= Format ========= */
 .format-options {
   display: flex;
   gap: 12px;
   justify-content: center;
 }
 .format-label {
-  font-size: 35px;
+  font-size: 32px;
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 12px;
@@ -144,29 +183,27 @@ label {
   display: none;
 }
 .format-options input[type="radio"]:checked + .format-label {
-  border: 2px solid #0b1956;
+  border: 2px solid #ffffef;
   transform: scale(1.2);
 }
 
-/* Submit Button */
+/* ========= Submit Button ========= */
 #submitBtn {
-  background-color: #0b1956;
-  color: white;
-  padding: 15px 25px;
+  background-color: #ffffef;
+  color: #dd94b7;
+  padding: 14px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  width: 120px;
   margin: 15px auto 0;
   display: block;
   font-size: 16px;
 }
 #submitBtn:hover {
-  background-color: #e9f2ff;
-  color: #0b1956;
+  color: #8279b6;
 }
 
-/* Book List */
+/* ========= Book List ========= */
 #bookList {
   max-width: 800px;
   margin: 20px auto;
@@ -183,8 +220,83 @@ label {
 .book-card-top {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 .book-card-top img {
   width: 100px;
   border-radius: 8px;
+}
+/* Status dropdown in form */
+.book-status {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.book-status label {
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  color: #9a7fb4;
+}
+
+.book-status select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: "Courier New", monospace;
+}
+
+/* Status text in library cards */
+.book-card .status {
+  margin-top: 6px;
+  font-weight: bold;
+  color: #9a7fb4;
+}
+
+/* ========= Mobile Responsive ========= */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  .book-card-form {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .book-cover-upload img {
+    width: 120px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  #submitBtn {
+    width: 100%;
+  }
+
+  .book-card-top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-card-top img {
+    width: 80px;
+  }
 }

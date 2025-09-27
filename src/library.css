@@ -1,0 +1,224 @@
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffef;
+  color: #9a7fb4;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Times New Roman", serif;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #9a7fb4;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #9a7fb4;
+  padding: 10px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.navbar .brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffef;
+  text-decoration: none;
+  font-family: "Times New Roman", serif;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .nav-links a {
+  color: #ffffef;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+  font-family: "Times New Roman", serif;
+}
+
+.navbar .nav-links a.active {
+  background-color: #ffffef;
+  color: #9a7fb4;
+}
+
+/* Filter dropdown */
+.filter-section {
+  max-width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  font-family: "Courier New", monospace;
+  color: #9a7fb4;
+}
+
+.filter-section select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: "Courier New", monospace;
+  background-color: #fff;
+}
+
+/* Library Grid */
+#libraryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#libraryGrid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid #f5a5c1;
+  transition: transform 0.2s;
+}
+
+#libraryGrid img:hover {
+  transform: scale(1.05);
+}
+
+/* Book card */
+.book-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  border: 2px solid #f5a5c1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.book-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.book-card h3 {
+  font-size: 16px;
+  color: #9a7fb4;
+  margin: 6px 0 4px;
+  font-weight: bold;
+}
+
+.book-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 2px 0;
+}
+
+/* Status text inside cards */
+.book-card .status {
+  margin-top: 6px;
+  font-weight: bold;
+  color: #9a7fb4;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#deleteBookBtn {
+  background-color: #f5a5c1;
+  color: #ffffef;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-family: "Courier New";
+  transition: background 0.3s;
+}
+
+#deleteBookBtn:hover {
+  background: #dd94b7;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #libraryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 18px;
+  }
+
+  .book-card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  #libraryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .book-card img {
+    height: 160px;
+  }
+}

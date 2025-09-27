@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Tracker - Home</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="home.html" class="brand">⊹₊⟡⋆ Cozy Books ⊹₊⟡⋆</a>
+      <div class="menu-toggle">☰</div>
+      <div class="nav-links">
+        <a href="home.html" class="active">Home</a>
+        <a href="../index.html">Add Book</a>
+        <a href="library.html">My Library</a>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Welcome back to Your Library 📚</h1>
+      <button class="library-btn" onclick="location.href='library.html'">
+        Go to My Library
+      </button>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="container">
+      <!-- Left Column -->
+      <div class="left-col">
+        <div class="card">
+          <h2>Currently Reading</h2>
+          <p id="currentReading">You’re not currently reading any books.</p>
+        </div>
+
+        <div class="card">
+          <h2>Recent Additions</h2>
+          <div class="books" id="recentBooks">
+            <p>Loading recent books...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-col">
+        <div class="card">
+          <h2>Reading Goal</h2>
+          <div class="stats">
+            <p><strong>Books Read:</strong> <span id="booksRead">0</span></p>
+            <p><strong>Goal:</strong> <span id="goal">20</span></p>
+          </div>
+          <progress id="goalProgress" value="0" max="20"></progress>
+        </div>
+
+        <div class="card quote-card">
+          <h2>Quote of the Day</h2>
+          <p id="quote"><em>Loading quote...</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Cozy Books</p>
+    </footer>
+
+    <!-- JS (optional for quotes + dynamic data) -->
+    <script src="home.js"></script>
+  </body>
+</html>
