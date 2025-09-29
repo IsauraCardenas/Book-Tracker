@@ -1,6 +1,5 @@
-// index.js
 document.addEventListener("DOMContentLoaded", () => {
-  const submitBtn = document.getElementById("submitBtn");
+  const form = document.getElementById("bookForm");
   const coverInput = document.getElementById("cover");
   const coverPreview = document.getElementById("coverPreview");
 
@@ -8,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let romanceValue = 0;
   let sadnessValue = 0;
 
-  // Preview uploaded cover
+  // ✅ Preview uploaded cover
   coverInput.addEventListener("change", () => {
     const file = coverInput.files[0];
     if (file) {
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Star rating
+  // ✅ Star rating
   document.querySelectorAll("#starRating span").forEach((star, idx, arr) => {
     star.addEventListener("click", () => {
       starValue = parseInt(star.dataset.value);
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Romance rating
+  // ✅ Romance rating
   document
     .querySelectorAll("#romanceRating span")
     .forEach((heart, idx, arr) => {
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-  // Sadness rating
+  // ✅ Sadness rating
   document.querySelectorAll("#sadnessRating span").forEach((sad, idx, arr) => {
     sad.addEventListener("click", () => {
       sadnessValue = parseInt(sad.dataset.value);
@@ -47,19 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Save book
-  if (submitBtn) {
-    submitBtn.addEventListener("click", (e) => {
+  // ✅ Save book on submit
+  if (form) {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const title = document.getElementById("title").value;
-      const author = document.getElementById("author").value;
-      const pages = document.getElementById("pages").value;
-      const summary = document.getElementById("summary").value;
-      const character = document.getElementById("character").value;
-      const format = document.querySelector(
-        'input[name="format"]:checked'
-      )?.value;
+      const title = document.getElementById("title").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const pages = document.getElementById("pages").value.trim();
+      const summary = document.getElementById("summary").value.trim();
+      const character = document.getElementById("character").value.trim();
+      const format =
+        document.querySelector("input[name='format']:checked")?.value || "";
+      const status = document.getElementById("status")?.value || "";
       const cover = coverPreview.src;
 
       if (!title || !author || !cover) {
@@ -78,17 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
         romance: romanceValue,
         sadness: sadnessValue,
         cover,
+        status,
       };
 
+      // ✅ Save to localStorage
       let books = JSON.parse(localStorage.getItem("books")) || [];
       books.push(book);
       localStorage.setItem("books", JSON.stringify(books));
 
-      // Reset form
-      document.querySelectorAll("input, textarea").forEach((el) => {
-        if (el.type === "radio" || el.type === "file") el.checked = false;
-        else el.value = "";
-      });
+      // ✅ Reset form + preview + ratings
+      form.reset();
       coverPreview.src = "";
       starValue = romanceValue = sadnessValue = 0;
       document
@@ -101,69 +99,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const status = document.getElementById("status").value;
-  const cover = coverPreview.src;
-
-  const book = { title, author, status, cover };
-
-  // Save to localStorage
-  let books = JSON.parse(localStorage.getItem("books")) || [];
-  books.push(book);
-  localStorage.setItem("books", JSON.stringify(books));
-
-  form.reset();
-  coverPreview.src = "";
-  alert("Book added!");
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const filterSelect = document.getElementById("filterStatus");
-
-  if (filterSelect) {
-    filterSelect.addEventListener("change", renderLibrary);
-  }
-
-  renderLibrary();
-});
-
-function renderLibrary() {
-  const libraryGrid = document.getElementById("libraryGrid");
-  const filterSelect = document.getElementById("filterStatus");
-  const selectedFilter = filterSelect ? filterSelect.value : "all";
-
-  libraryGrid.innerHTML = "";
-
-  let books = JSON.parse(localStorage.getItem("books")) || [];
-
-  // Filter by status
-  if (selectedFilter !== "all") {
-    books = books.filter((book) => book.status === selectedFilter);
-  }
-
-  // Render cards
-  books.forEach((book, index) => {
-    const card = document.createElement("div");
-    card.classList.add("book-card");
-
-    card.innerHTML = `
-      <img src="${book.cover}" alt="${book.title}">
-      <h3>${book.title}</h3>
-      <p><em>${book.author}</em></p>
-      <p class="status">Status: ${formatStatus(book.status)}</p>
-    `;
-
-    card.addEventListener("click", () => openModal(book, index));
-    libraryGrid.appendChild(card);
-  });
-}
-
-function formatStatus(status) {
-  if (status === "currently-reading") return "📖 Currently Reading";
-  if (status === "read") return "✅ Read";
-  if (status === "tbr") return "📝 To Be Read";
-  return "";
-}
