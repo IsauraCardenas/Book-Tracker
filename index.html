@@ -3,125 +3,152 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Log</title>
+    <title>Add a Book</title>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <!-- Navbar -->
+    <!-- ✅ Navbar -->
     <nav class="navbar">
-      <a href="#" class="brand">⊹₊⟡⋆ Cozy Books ⊹₊⟡⋆</a>
-      <div class="menu-toggle">☰</div>
+      <a href="home.html" class="brand">Between the Lines</a>
       <div class="nav-links">
         <a href="src/home.html">Home</a>
-        <a href="src/library.html">My Books</a>
-        <a href="index.html" class="active">Book Log</a>
+        <a href="index.html" class="active">Add Book</a>
+        <a href="src/library.html">Library</a>
       </div>
     </nav>
 
-    <h1>𓂃✍︎ Add a New Book 𓂃✍︎</h1>
+    <main>
+      <h1>⋆˚✿˖° Add a Book ⋆˚✿˖°</h1>
 
-    <!-- Book Review Card Style -->
-    <div class="book-card-form">
-      <div class="book-cover-upload">
-        <label for="cover">Upload book cover</label>
-        <input type="file" id="cover" accept="image/*" class="file-input" />
-        <img id="coverPreview" src="" alt="Preview" />
-      </div>
+      <!-- ✅ Book Form -->
+      <form id="bookForm" class="book-form">
+        <!-- Card Layout -->
+        <div class="book-card-form">
+          <!-- Cover Upload -->
+          <div class="book-cover-upload">
+            <label for="cover">Upload Cover</label>
+            <input type="file" id="cover" accept="image/*" />
+            <img id="coverPreview" alt="Cover Preview" />
+          </div>
 
-      <div class="book-info-section">
-        <label>Title:</label>
-        <input
-          type="text"
-          id="title"
-          class="input-text"
-          placeholder="Enter book title"
-        />
+          <!-- Book Info -->
+          <div class="book-info-section">
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              class="input-text"
+              placeholder="Book Title"
+              required
+            />
 
-        <label>Author:</label>
-        <input
-          type="text"
-          id="author"
-          class="input-text"
-          placeholder="Enter author's name"
-        />
+            <label for="author">Author:</label>
+            <input
+              type="text"
+              id="author"
+              class="input-text"
+              placeholder="Author"
+              required
+            />
 
-        <label>Pages:</label>
-        <input
-          type="text"
-          id="pages"
-          class="input-text"
-          placeholder="Enter number of pages"
-        />
+            <label for="pages">Pages:</label>
+            <input
+              type="number"
+              id="pages"
+              class="input-text"
+              placeholder="Number of Pages"
+            />
 
-        <label>Summary:</label>
-        <textarea
-          id="summary"
-          class="input-text"
-          placeholder="Short summary..."
-        ></textarea>
+            <label for="summary">Summary:</label>
+            <textarea
+              id="summary"
+              class="input-text"
+              placeholder="Short summary"
+            ></textarea>
 
-        <label>Favorite Character:</label>
-        <input
-          type="text"
-          id="character"
-          class="input-text"
-          placeholder="Who’s your favorite?"
-        />
+            <label for="character">Favorite Character:</label>
+            <input
+              type="text"
+              id="character"
+              class="input-text"
+              placeholder="Character name"
+            />
 
-        <!-- Book Status -->
-        <div class="book-status">
-          <label for="status">Book Status:</label>
-          <select id="status" name="status" required>
-            <option value="">-- Select Status --</option>
-            <option value="currently-reading">📖 Currently Reading</option>
-            <option value="read">✅ Read</option>
-            <option value="tbr">📝 To Be Read</option>
-          </select>
+            <!-- ✅ Format -->
+            <fieldset class="format-options">
+              <legend>Format:</legend>
+              <input type="radio" id="ebook" name="format" value="ebook" />
+              <label class="format-label" for="ebook">💻</label>
+
+              <input
+                type="radio"
+                id="paperback"
+                name="format"
+                value="paperback"
+              />
+              <label class="format-label" for="paperback">📘</label>
+
+              <input
+                type="radio"
+                id="audiobook"
+                name="format"
+                value="audiobook"
+              />
+              <label class="format-label" for="audiobook">🎧</label>
+            </fieldset>
+
+            <!-- ✅ Ratings -->
+            <label> Ratings:</label>
+            <div class="overall">
+              <label>Overall</label>
+              <div id="starRating">
+                <span data-value="1">★</span>
+                <span data-value="2">★</span>
+                <span data-value="3">★</span>
+                <span data-value="4">★</span>
+                <span data-value="5">★</span>
+              </div>
+            </div>
+
+            <div class="romance">
+              <label>Romance</label>
+              <div id="romanceRating">
+                <span data-value="1">ᥫ᭡</span>
+                <span data-value="2">ᥫ᭡</span>
+                <span data-value="3">ᥫ᭡</span>
+                <span data-value="4">ᥫ᭡</span>
+                <span data-value="5">ᥫ᭡</span>
+              </div>
+            </div>
+
+            <div class="sadness">
+              <label>Sadness</label>
+              <div id="sadnessRating">
+                <span data-value="1">𓄼</span>
+                <span data-value="2">𓄼</span>
+                <span data-value="3">𓄼</span>
+                <span data-value="4">𓄼</span>
+                <span data-value="5">𓄼</span>
+              </div>
+            </div>
+
+            <!-- ✅ Status -->
+            <div class="book-status">
+              <label for="status">Status:</label>
+              <select id="status" required>
+                <option value="">Select one</option>
+                <option value="tbr">📝 To Be Read</option>
+                <option value="currently-reading">📖 Currently Reading</option>
+                <option value="read">✅ Read</option>
+              </select>
+            </div>
+          </div>
         </div>
 
-        <label>Format:</label>
-        <div class="format-options">
-          <input type="radio" id="format1" name="format" value="📖 Book" />
-          <label for="format1" class="format-label">📖</label>
-
-          <input type="radio" id="format2" name="format" value="🎧 Audiobook" />
-          <label for="format2" class="format-label">🎧</label>
-
-          <input type="radio" id="format3" name="format" value="📱 eBook" />
-          <label for="format3" class="format-label">📱</label>
-        </div>
-
-        <label>Ratings:</label>
-        <label>Overall</label>
-        <div id="starRating" class="overall">
-          <span data-value="1">★</span>
-          <span data-value="2">★</span>
-          <span data-value="3">★</span>
-          <span data-value="4">★</span>
-          <span data-value="5">★</span>
-        </div>
-
-        <label>Romance</label>
-        <div id="romanceRating" class="romance">
-          <span data-value="1">ᥫ᭡</span>
-          <span data-value="2">ᥫ᭡</span>
-          <span data-value="3">ᥫ᭡</span>
-          <span data-value="4">ᥫ᭡</span>
-          <span data-value="5">ᥫ᭡</span>
-        </div>
-
-        <label>Sadness</label>
-        <div id="sadnessRating" class="sadness">
-          <span data-value="1">𓄼</span>
-          <span data-value="2">𓄼</span>
-          <span data-value="3">𓄼</span>
-          <span data-value="4">𓄼</span>
-          <span data-value="5">𓄼</span>
-        </div>
-
-        <button id="submitBtn">Add Book</button>
-      </div>
-    </div>
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn">Add Book</button>
+      </form>
+    </main>
 
     <script src="src/script.js"></script>
   </body>

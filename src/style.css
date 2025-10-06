@@ -1,8 +1,7 @@
-/* ========= Base Styles ========= */
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffef;
-  color: #9a7fb4;
+  background-color: #e9f2ff;
+  color: #0b1956;
   margin: 0;
   padding: 20px;
 }
@@ -12,22 +11,21 @@ h1 {
   font-family: "Times New Roman";
 }
 
-/* ========= Navbar ========= */
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #9a7fb4;
+  background-color: #0b1956;
   padding: 10px 20px;
   border-radius: 12px;
   margin-bottom: 20px;
-  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .navbar .brand {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  color: #ffffef;
+  color: #e9f2ff;
   text-decoration: none;
   font-family: "Times New Roman";
 }
@@ -35,11 +33,10 @@ h1 {
 .navbar .nav-links {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
 }
 
 .navbar .nav-links a {
-  color: #ffffef;
+  color: #e8d9ec;
   text-decoration: none;
   font-size: 16px;
   padding: 6px 12px;
@@ -49,89 +46,73 @@ h1 {
 }
 
 .navbar .nav-links a.active {
-  background-color: #ffffef;
-  color: #9a7fb4;
+  background-color: #e9f2ff;
+  color: #426cc2;
 }
 
-/* ========= Form ========= */
-.book-form {
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: #e8d9ec;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.book-form input,
-.book-form textarea,
-.book-form select,
-.book-form button {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.book-form button {
-  background: #426cc2;
-  color: white;
-  cursor: pointer;
-}
-.book-form button:hover {
-  background: #2f4d91;
-}
-
-/* ========= Card Layout ========= */
+/* Card Layout (Worksheet Style) */
 .book-card-form {
   display: flex;
   gap: 20px;
-  background-color: #dd94b7;
+  background-color: #faf5ef;
   border: 2px solid #e2b6c2;
   border-radius: 12px;
   padding: 20px;
   max-width: 800px;
   margin: 20px auto;
-  flex-wrap: wrap; /* makes it responsive */
-}
-
-.book-cover-upload {
-  flex: 1;
+} /* Cover Upload */
+.book-cover-upload label {
+  display: inline-block;
+  background-color: #a78bfa;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Courier New";
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
   text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+.book-cover-upload label:hover {
+  background-color: #7c3aed;
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
 .book-cover-upload img {
+  display: block;
   width: 150px;
   height: auto;
   margin-top: 10px;
-  padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ffffef;
-  font-family: "Courier New";
-  color: #ffffef;
-}
-.input-text {
-  color: black;
-  font-family: "Courier New";
-}
-input {
-  color: #ffffef;
-  font-family: "Courier New";
+  border: 1px solid #ccc;
+  align-items: center;
 }
 
-/* ========= Labels ========= */
+.book-cover-upload input[type="file"] {
+  display: none;
+}
+
+#coverPreview {
+  display: none;
+  margin: 12px auto 0;
+  max-width: 180px;
+  max-height: 160px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+/* Label */
 label {
-  font-size: 18px;
+  font-size: 22px;
   font-family: "Courier New";
-  color: #ffffef;
 }
 ::placeholder {
   font-family: "Courier New";
-}
-
-/* ========= Info Section ========= */
+  font-size: 18px;
+} /* Info Section */
 .book-info-section {
   flex: 2;
   display: flex;
@@ -144,16 +125,14 @@ label {
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
-}
-
-/* ========= Rating ========= */
+} /* Rating */
 .overall span,
 .romance span,
 .sadness span {
   font-size: 22px;
   cursor: pointer;
   padding: 2px;
-  color: #ffffef;
+  color: #0b1956;
 }
 .overall span.selected {
   color: #f8ed4c;
@@ -163,16 +142,19 @@ label {
 }
 .sadness span.selected {
   color: #426cc2;
-}
-
-/* ========= Format ========= */
+} /* Format */
 .format-options {
   display: flex;
   gap: 12px;
   justify-content: center;
+  border-radius: 20px;
+}
+legend {
+  font-family: "Courier New";
+  font-size: 22px;
 }
 .format-label {
-  font-size: 32px;
+  font-size: 35px;
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 12px;
@@ -183,27 +165,25 @@ label {
   display: none;
 }
 .format-options input[type="radio"]:checked + .format-label {
-  border: 2px solid #ffffef;
+  border: 2px solid #0b1956;
   transform: scale(1.2);
-}
-
-/* ========= Submit Button ========= */
+} /* Submit Button */
 #submitBtn {
-  background-color: #ffffef;
-  color: #dd94b7;
-  padding: 14px 20px;
+  background-color: #0b1956;
+  color: white;
+  padding: 15px 25px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  width: 120px;
   margin: 15px auto 0;
   display: block;
   font-size: 16px;
 }
 #submitBtn:hover {
-  color: #8279b6;
-}
-
-/* ========= Book List ========= */
+  background-color: #e9f2ff;
+  color: #0b1956;
+} /* Book List */
 #bookList {
   max-width: 800px;
   margin: 20px auto;
@@ -220,83 +200,129 @@ label {
 .book-card-top {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
 }
 .book-card-top img {
   width: 100px;
   border-radius: 8px;
 }
-/* Status dropdown in form */
-.book-status {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+
+/* Library Grid */
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.book-status label {
-  font-family: "Courier New", monospace;
-  font-size: 16px;
-  color: #9a7fb4;
+.library-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid #e2b6c2;
+  transition: transform 0.2s;
+}
+.library-grid img:hover {
+  transform: scale(1.05);
 }
 
-.book-status select {
-  padding: 8px;
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#deleteBookBtn {
+  background-color: #f70000;
+  color: white;
+  border: none;
+  padding: 10px 15px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-family: "Courier New", monospace;
+  cursor: pointer;
+  margin-top: 15px;
+}
+#deleteBookBtn:hover {
+  background: #c40000;
 }
 
-/* Status text in library cards */
-.book-card .status {
-  margin-top: 6px;
-  font-weight: bold;
-  color: #9a7fb4;
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+#deleteBookBtn {
+  background-color: #f70000;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+#deleteBookBtn:hover {
+  background: #c40000;
 }
 
-/* ========= Mobile Responsive ========= */
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .navbar .nav-links {
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-  }
-  h1 {
-    font-size: 25px;
-  }
-  .book-card-form {
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-  }
-
-  .book-cover-upload img {
-    width: 120px;
-  }
-
-  label {
-    font-size: 16px;
-  }
-
-  #submitBtn {
-    width: 100%;
-  }
-
-  .book-card-top {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .book-card-top img {
-    width: 80px;
-  }
+/* Status dropdown */
+.book-status select {
+  padding: 8px 12px;
+  border: 2px solid #a78bfa;
+  border-radius: 8px;
+  background-color: #f9f6ff;
+  color: #4b0082;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
