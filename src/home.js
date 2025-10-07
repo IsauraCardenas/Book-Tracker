@@ -7,49 +7,70 @@ document.addEventListener("DOMContentLoaded", () => {
   const goalProgressEl = document.getElementById("goalProgress");
   const quoteEl = document.getElementById("quote");
 
+  // Load saved books
   const books = JSON.parse(localStorage.getItem("books")) || [];
 
-  // 1. Currently Reading (pick the first marked "reading")
-  const current = books.find((book) => book.status === "reading");
-  if (currentReadingEl) {
-    if (current) {
-      currentReadingEl.innerHTML = `<strong>${current.title}</strong> by ${
-        current.author
-      } <br> Progress: ${current.progress || 0}%`;
-    } else {
-      currentReadingEl.textContent = "You’re not currently reading any books.";
-    }
+  // Currently Reading
+  const currentlyReading = books.filter(
+    (book) => book.status === "currently-reading"
+  );
+
+  if (currentlyReading.length > 0) {
+    currentReadingEl.innerHTML = currentlyReading
+      .map(
+        (book) => `
+        <div class="book-item">
+          <img src="${book.cover}" alt="${book.title}" class="small-cover">
+          <div>
+            <strong>${book.title}</strong><br>
+            <em>${book.author}</em>
+          </div>
+        </div>
+      `
+      )
+      .join("");
+  } else {
+    currentReadingEl.textContent = "You’re not currently reading any books.";
   }
 
-  // 2. Recent Additions
-  if (recentBooksEl) {
-    recentBooksEl.innerHTML = "";
-    books.slice(-3).forEach((book) => {
-      const img = document.createElement("img");
-      img.src = book.cover;
-      img.alt = book.title;
-      recentBooksEl.appendChild(img);
-    });
+  //Recent Additions
+  const recent = [...books].slice(-3).reverse(); // last 3 added books
+
+  if (recent.length > 0) {
+    recentBooksEl.innerHTML = recent
+      .map(
+        (book) => `
+        <div class="book-item">
+          <img src="${book.cover}" alt="${book.title}" class="small-cover">
+          <div>
+            <strong>${book.title}</strong><br>
+            <em>${book.author}</em>
+          </div>
+        </div>
+      `
+      )
+      .join("");
+  } else {
+    recentBooksEl.textContent = "No books added yet.";
   }
 
-  // 3. Reading Goal
-  const goal = 20;
+  // 3. Reading Goal Progress
   const booksRead = books.filter((book) => book.status === "read").length;
-  if (booksReadEl && goalEl && goalProgressEl) {
-    booksReadEl.textContent = booksRead;
-    goalEl.textContent = goal;
-    goalProgressEl.value = booksRead;
-    goalProgressEl.max = goal;
-  }
+  const goal = parseInt(goalEl.textContent) || 20;
 
-  // 4. Random Quote
+  booksReadEl.textContent = booksRead;
+  goalProgress.value - booksRead;
+
+  // Quote of the day
+
   const quotes = [
-    "“A reader lives a thousand lives before he dies.” – George R.R. Martin",
-    "“So many books, so little time.” – Frank Zappa",
-    "“Reading is essential for those who seek to rise above the ordinary.” – Jim Rohn",
-    "“The man who does not read has no advantage over the man who cannot read.” – Mark Twain",
+    "Areader lives a thousand lives before he dies. - George R.R. Martin",
+    "So many books, so little time. - Frank Zappa",
+    "Reading gives us someplace to go when we have to stay where we are. - Mason Coley",
+    "Books are a uniquely portable magic. - Stephen King",
+    "You can never get a cup of tea larger enough or a book long enough to suit me. - C.S Lewis",
   ];
-  if (quoteEl) {
-    quoteEl.textContent = quotes[Math.floor(Math.random() * quotes.length)];
-  }
+
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  quotes.innerHTML = "<em>${randomQuotes}</em>";
 });
