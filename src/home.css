@@ -2,12 +2,12 @@
 
 /* ===== Colors & base ===== */
 :root {
-  --primary: #9a7fb4;
-  --accent: #dd94b7;
-  --bg: #ffffef;
-  --card: #fdf6ff;
-  --muted: #e2b6c2;
-  --text: #6d4c7d;
+  --primary: #08205b;
+  --accent: #edf0f5;
+  --bg: #edf0f5;
+  --card: #faf5ef;
+  --muted: #3450ad;
+  --text: #08205c;
 }
 
 * {
@@ -29,7 +29,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: var(--primary);
-  padding: 12px 18px;
+  padding: 10px 20px;
   border-radius: 12px;
   margin: 16px;
   gap: 12px;
@@ -37,7 +37,7 @@ body {
 }
 
 .navbar .brand {
-  font-size: 20px;
+  font-size: 27px;
   font-weight: bold;
   color: var(--bg);
   text-decoration: none;
@@ -61,8 +61,8 @@ body {
 .navbar .nav-links a {
   color: var(--bg);
   text-decoration: none;
-  font-size: 15px;
-  padding: 6px 10px;
+  font-size: 16px;
+  padding: 6px 12px;
   border-radius: 8px;
   transition: background 0.25s ease, color 0.25s ease;
   font-family: "Times New Roman", serif;
@@ -174,7 +174,7 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-  background: #fdeef7;
+  background: #f9f6ff;
   border-radius: 8px;
 }
 progress::-webkit-progress-value {
