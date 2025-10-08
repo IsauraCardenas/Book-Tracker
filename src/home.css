@@ -257,6 +257,20 @@ footer {
   color: #5e3e66;
 }
 
+.book-item {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-item:active {
+  transform: scale(0.97);
+}
+
 /* ===== Responsive: mobile ===== */
 @media (max-width: 768px) {
   .container {

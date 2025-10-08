@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (status === "currently-reading") return "📖 Currently Reading";
     if (status === "read") return "✅ Read";
     if (status === "tbr") return "📝 To Be Read";
-    return "❓ Unknown";
+    return "❓ Unknown ❓";
   }
 
   // ✅ Close modal
@@ -99,4 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   renderLibrary();
+
+  // Export openModal function for use in home.js
+  window.openBookFromHome = function (bookTitle) {
+    const books = JSON.parse(localStorage.getItem("books")) || [];
+    const foundIndex = books.findIndex((b) => b.title == bookTitle);
+    if (foundIndex !== -1) {
+      openModal(books[foundIndex], foundIndex);
+    }
+  };
 });

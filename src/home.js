@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentReadingEl.innerHTML = currentlyReading
       .map(
         (book) => `
-        <div class="book-item">
+        <div class="book-item" data-title="${book.title}">
           <img src="${book.cover}" alt="${book.title}" class="small-cover">
           <div>
             <strong>${book.title}</strong><br>
@@ -29,18 +29,28 @@ document.addEventListener("DOMContentLoaded", () => {
       `
       )
       .join("");
+
+    // Make cards clickable
+    currentReadingEl.querySelectorAll(".book-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const title = item.dataset.title;
+        if (window.openBookFromHome) {
+          window.openBookFromHome(title);
+        }
+      });
+    });
   } else {
     currentReadingEl.textContent = "You’re not currently reading any books.";
   }
 
-  //Recent Additions
+  // Recent Additions
   const recent = [...books].slice(-3).reverse(); // last 3 added books
 
   if (recent.length > 0) {
     recentBooksEl.innerHTML = recent
       .map(
         (book) => `
-        <div class="book-item">
+        <div class="book-item" data-title="${book.title}">
           <img src="${book.cover}" alt="${book.title}" class="small-cover">
           <div>
             <strong>${book.title}</strong><br>
@@ -50,27 +60,36 @@ document.addEventListener("DOMContentLoaded", () => {
       `
       )
       .join("");
+
+    //  Make recent cards clickable
+    recentBooksEl.querySelectorAll(".book-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const title = item.dataset.title;
+        if (window.openBookFromHome) {
+          window.openBookFromHome(title);
+        }
+      });
+    });
   } else {
     recentBooksEl.textContent = "No books added yet.";
   }
 
-  // 3. Reading Goal Progress
+  //  Reading Goal Progress
   const booksRead = books.filter((book) => book.status === "read").length;
   const goal = parseInt(goalEl.textContent) || 20;
 
   booksReadEl.textContent = booksRead;
-  goalProgress.value - booksRead;
+  goalProgressEl.value = booksRead;
 
   // Quote of the day
-
   const quotes = [
-    "Areader lives a thousand lives before he dies. - George R.R. Martin",
+    "A reader lives a thousand lives before he dies. - George R.R. Martin",
     "So many books, so little time. - Frank Zappa",
-    "Reading gives us someplace to go when we have to stay where we are. - Mason Coley",
+    "Reading gives us someplace to go when we have to stay where we are. - Mason Cooley",
     "Books are a uniquely portable magic. - Stephen King",
-    "You can never get a cup of tea larger enough or a book long enough to suit me. - C.S Lewis",
+    "You can never get a cup of tea large enough or a book long enough to suit me. - C.S. Lewis",
   ];
 
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-  quotes.innerHTML = "<em>${randomQuotes}</em>";
+  quoteEl.innerHTML = `<em>${randomQuote}</em>`;
 });
