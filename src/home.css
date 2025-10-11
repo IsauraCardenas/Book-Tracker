@@ -271,6 +271,47 @@ footer {
   transform: scale(0.97);
 }
 
+.about {
+  background: var(--card);
+  border: 2px solid var(--muted);
+  border-radius: 16px;
+  margin: 0 16px 32px;
+  padding: 32px 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.8);
+}
+
+.about h2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.7rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+  position: relative;
+}
+.about h2::after {
+  content: "+";
+  color: #a98dc6;
+  font-size: 1.2rem;
+}
+
+.about p {
+  max-width: 700px;
+  margin: 0 auto 12px;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #4b2f52;
+}
+
+.about p strong {
+  color: var(--primary);
+}
+
 /* ===== Responsive: mobile ===== */
 @media (max-width: 768px) {
   .container {
@@ -309,6 +350,16 @@ footer {
   #currentyReading {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
+
+  .about {
+    padding: 24px 16px;
+  }
+}
+.about h2 {
+  font-size: 1.4rem;
+}
+.about p {
+  font-size: 0.95rem;
 }
 
 /* ===== Desktop polish ===== */
