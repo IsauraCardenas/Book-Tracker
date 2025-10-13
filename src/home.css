@@ -312,6 +312,79 @@ footer {
   color: var(--primary);
 }
 
+/* ====AI Helper Section ====*/
+.ai-helper {
+  background: var(--card);
+  border: 2px solid var(--muted);
+  border-radius: 16px;
+  margin: 0 16px 32px;
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.ai-helper h2 {
+  font-family: "Courier New";
+  font-size: 1.7rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.ai-helper p {
+  color: #4b3f52;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+.ai-chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+#userQuestion {
+  width: 100%;
+  max-width: 600px;
+  height: 90px;
+  border: 2px solid var(--muted);
+  border-radius: 12px;
+  padding: 12px;
+  font-family: "Courier New";
+  resize: none;
+  background: #fff;
+  color: var(--text);
+}
+
+#askAI {
+  background: var(--primary);
+  color: var(--bg);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#askAI:hover {
+  background: var(--muted);
+}
+
+.ai-response {
+  margin-top: 20px;
+  background: #fff;
+  border: 2px dashed var(--muted);
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+  color: #333;
+  min-height: 60px;
+}
+
 /* ===== Responsive: mobile ===== */
 @media (max-width: 768px) {
   .container {

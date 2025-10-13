@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const goalEl = document.getElementById("goal");
   const goalProgressEl = document.getElementById("goalProgress");
   const quoteEl = document.getElementById("quote");
+  const askAIButton = document.getElementById("askAI");
+  const userQuestion = document.getElementById("userQuestion");
+  const aiResponse = document.getElementById("aiResponse");
 
   // Load saved books
   const books = JSON.parse(localStorage.getItem("books")) || [];
@@ -89,6 +92,75 @@ document.addEventListener("DOMContentLoaded", () => {
     "Books are a uniquely portable magic. - Stephen King",
     "You can never get a cup of tea large enough or a book long enough to suit me. - C.S. Lewis",
   ];
+
+  // AI Button
+
+  askAIButton.addEventListener("click", async () => {
+    const query = userQuestion.value.trim();
+    if (query === "") {
+      aiResponse.innerHTML =
+        "<em>Please enter what kind of book you want 📖</em>";
+      return;
+    }
+
+    aiResponse.innerHTML =
+      "<em>Searching for the perfect books for you... ✨</em>";
+
+    try {
+      // Fetch books from Google Books API
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
+          query
+        )}&maxResults=5`
+      );
+      const data = await response.json();
+
+      if (!data.items || data.items.length === 0) {
+        aiResponse.innerHTML =
+          "<em>No books found — try a different topic 🌻</em>";
+        return;
+      }
+
+      //  Display recommendations
+      const booksHTML = data.items
+        .map((item) => {
+          const info = item.volumeInfo;
+          const title = info.title || "Untitled";
+          const author = info.authors
+            ? info.authors.join(", ")
+            : "Unknown author";
+          const thumbnail = info.imageLinks ? info.imageLinks.thumbnail : "";
+          const description = info.description
+            ? info.description.substring(0, 120) + "..."
+            : "No description available.";
+
+          return `
+            <div class="book-reco">
+              ${
+                thumbnail
+                  ? `<img src="${thumbnail}" alt="${title}" class="book-cover" />`
+                  : `<div class="no-cover">📘</div>`
+              }
+              <div class="book-info">
+                <strong>${title}</strong><br />
+                <em>${author}</em>
+                <p>${description}</p>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      aiResponse.innerHTML = `
+        <h3>📖 Recommended Books</h3>
+        <div class="book-list">${booksHTML}</div>
+      `;
+    } catch (error) {
+      console.error(error);
+      aiResponse.innerHTML =
+        "<em>Something went wrong — please try again later 💭</em>";
+    }
+  });
 
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   quoteEl.innerHTML = `<em>${randomQuote}</em>`;
