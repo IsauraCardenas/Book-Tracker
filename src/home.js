@@ -104,47 +104,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     aiResponse.innerHTML =
-      "<em>Searching for the perfect books for you... ✨</em>";
+      "<em>Searching for the perfect books for you...  </em>";
 
     try {
       // Fetch books from Google Books API
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
-          query
-        )}&maxResults=5`
+        `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api‐key=YOUR_NYT_KEY`
       );
       const data = await response.json();
 
       if (!data.items || data.items.length === 0) {
         aiResponse.innerHTML =
-          "<em>No books found — try a different topic 🌻</em>";
+          "<em>No books found — try a different topic. </em>";
         return;
       }
-
+      // FIlter some publication date
+      const books = data.results.books
+        .filter((b) => {
+          if (!b.publised_date) return true;
+          const pubYear = Number(b.published_date.slice(0, 4));
+          const currentYear = new Date().getFullYear();
+          return currentYear - pubYear <= 5;
+        })
+        .slice(0, 5);
       //  Display recommendations
-      const booksHTML = data.items
-        .map((item) => {
-          const info = item.volumeInfo;
-          const title = info.title || "Untitled";
-          const author = info.authors
-            ? info.authors.join(", ")
-            : "Unknown author";
-          const thumbnail = info.imageLinks ? info.imageLinks.thumbnail : "";
-          const description = info.description
-            ? info.description.substring(0, 120) + "..."
-            : "No description available.";
+      const booksHTML = books
+        .map((b) => {
+          const title = b.title;
+          const author = b.author;
+          const desc = b.description || "No description available. ";
+          const img = b.book_image;
 
           return `
             <div class="book-reco">
               ${
-                thumbnail
-                  ? `<img src="${thumbnail}" alt="${title}" class="book-cover" />`
+                img
+                  ? `<img src="${img}" alt="${title}" class="book-cover" />`
                   : `<div class="no-cover">📘</div>`
               }
               <div class="book-info">
                 <strong>${title}</strong><br />
                 <em>${author}</em>
-                <p>${description}</p>
+                <p>${desc}</p>
               </div>
             </div>
           `;
@@ -152,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .join("");
 
       aiResponse.innerHTML = `
-        <h3>📖 Recommended Books</h3>
+        <h3>📖 Bestselling Books</h3>
         <div class="book-list">${booksHTML}</div>
       `;
     } catch (error) {
